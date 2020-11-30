@@ -10,6 +10,8 @@ var Keys = {
   , DOWN : 'ArrowDown'
   , LEFT : 'ArrowLeft'
   , RIGHT : 'ArrowRight'
+
+  , ENTER : 'Enter'
   , init: () => {
     window.addEventListener('keydown', function (e) {
       if (e.key !== undefined) keys[e.key] = e.type === 'keydown'; // Handle the event with KeyboardEvent.key and set handled true.
@@ -27,6 +29,10 @@ var Keys = {
     if (keys[Keys.RIGHT] || keys['d']) p.xSpeed = 1;
     if (keys[Keys.UP] || keys['w'])    p.ySpeed = -1;
     if (keys[Keys.DOWN] || keys['s'])  p.ySpeed = 1;
-    if (keys[' '] || keys['z'] || keys['k']) p.attack = 1;
+    if (keys[' '] || keys['z'] || keys['k']) {p.attack = 1;}
+    if (keys[Keys.ENTER]) {
+      if (state === GAME_STATE.OVER) main.startGame();
+      else if (state === GAME_STATE.END) main.startScreen();
+    }
   }
 };

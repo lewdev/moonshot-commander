@@ -7,8 +7,10 @@ const Draw = (function() {
       , w: options.w * options.unitSize * options.scale
       , h: options.h * options.unitSize * options.scale
       , color: options.color
+      , glow: options.glow
       , rounded: options.rounded
       , opacity: options.opacity
+      , rotate: options.rotate
     });
   }
   //utilities
@@ -21,9 +23,9 @@ const Draw = (function() {
     const rounded = options.rounded ? options.rounded : ""; 
     ctx.strokeStyle = options.color;
     ctx.fillStyle = options.color;
-    ctx.lineJoin = "round";
     ctx.lineWidth = options.radius;
     if (rounded) {
+      ctx.lineJoin = "round";
       ctx.strokeRect(
         x + (options.radius * .5),
         y + (options.radius * .5),
@@ -46,14 +48,16 @@ const Draw = (function() {
     ctx.fillRect(x, y, w, h);
     ctx.stroke();
     ctx.fill();
+    ctx.restore(); 
   }
   function circle(options) {
-    ctx.beginPath();
-    const { x, y, radius, color, line } = options;
+    const { x, y, radius, color, line, opacity } = options;
     const startAngle = 0, endAngle = 2;
+    ctx.beginPath();
     ctx.fillStyle = color;
     ctx.arc(x, y, radius, startAngle, endAngle * Math.PI);
     ctx.fill();
+    ctx.globalAlpha = opacity || 1;
     if (line) {
       ctx.lineWidth = line.width || 1;
       ctx.strokeStyle = line.color || 'black';
@@ -81,6 +85,7 @@ const Draw = (function() {
     return measure;
   }
   function clear(bgColor) {
+    ctx.globalAlpha = 1;
     ctx.fillStyle = bgColor || "black";
     ctx.clearRect(0, 0, c.width, c.height);
     ctx.fillRect(0, 0, c.width, c.height);

@@ -6,17 +6,17 @@ const Img = (() => {
       IMG_MAP[imgName].image.src = IMG_MAP[imgName].src;
     });
   }
-  const draw = (pos, imgName, row, col, zoom = 1) => { //image is drawn centered
+  const draw = (pos, imgName, row, col, tileSize = 64, zoom = 1) => { //image is drawn centered
     const img = IMG_MAP[imgName];
     if (!img) return;
-    const offsetX = img.w * col;
-    const offsetY = img.h * row;
+    const offsetX = tileSize * col;
+    const offsetY = tileSize * row;
     ctx.drawImage(
-      img.image, offsetX, offsetY, img.w, img.h
-      , pos.x - (img.w * zoom / 2)
-      , pos.y - (img.h * zoom / 2)
-      , img.w * zoom
-      , img.h * zoom
+      img.image, offsetX, offsetY, tileSize, tileSize
+      , pos.x - (tileSize * zoom / 2)
+      , pos.y - (tileSize * zoom / 2)
+      , tileSize * zoom
+      , tileSize * zoom
     );
   };
   return {
