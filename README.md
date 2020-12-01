@@ -1,4 +1,4 @@
-# commander-moonshot
+# moonshot-commander
 
 Play a classic top-down shooter with a boss at the end. This game was created with original graphics, music, and JavaScript.
 
