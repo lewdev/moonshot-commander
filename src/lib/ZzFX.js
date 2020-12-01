@@ -1,3 +1,7 @@
+
+// zzfxX - the common audio context
+zzfxX=new(top.AudioContext||webkitAudioContext);
+
 // zzfx() - the universal entry point -- returns a AudioBufferSourceNode
 zzfx=(...t)=>zzfxP(zzfxG(...t))
 
@@ -12,6 +16,3 @@ zzfxV=.2
 
 // zzfxR - global sample rate
 zzfxR=44100
-
-// zzfxX - the common audio context
-zzfxX=new(top.AudioContext||webkitAudioContext);

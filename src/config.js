@@ -4,6 +4,7 @@ const IMG_MAP = {
   "moonshot-assets": { src: 'assets/moonshot-assets.png' },
   "start-screen": { src: 'assets/start-screen.png' },
   "game-complete-screen": { src: 'assets/game-complete-screen.png' },
+  "moonshot-commander-face": { src: 'assets/moonshot-commander-face.png' },
 };
 const MUSIC_VOLUME = .5;
 const BULLET_DAMAGE = { enemy: 10, player: 40, bot: 30 };

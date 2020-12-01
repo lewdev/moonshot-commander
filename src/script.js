@@ -3,12 +3,13 @@ const main = (() => {
   const APP_DATA_KEY = "moonshot-commander";
   let endScreenInterval;
   let startScreenInterval;
+  let endScreenStart = 0;
   window.onload = () => {
     c.width = 800; c.height = 600;
+    c.style.marginLeft = 'auto';
+    c.style.marginRight = 'auto';
+    c.style.display = 'block';
     document.body.appendChild(c);
-    state = GAME_STATE.START;
-    
-    loadData();
     Keys.init();
     Img.init();
     startScreen();
@@ -91,13 +92,20 @@ const main = (() => {
     else if (state === GAME_STATE.END) {
       clearInterval(gameLoop);
       const img = IMG_MAP["game-complete-screen"];
+      const faceImg = IMG_MAP["moonshot-commander-face"];
       Music.play("cruising-thru-space");
+      endScreenStart = t;
       endScreenInterval = setInterval(() => {
         if (state === GAME_STATE.END) {
           Draw.clear(Colors.BLACK);
           Keys.handle();
           ctx.drawImage(img.image, 0, 0, 800, 600, 0, 0, 800, 600);
+          // reveal face after 10 seconds as a bonus to those who are patient
+          if (t - endScreenStart > 10000) {
+            ctx.drawImage(faceImg.image, 0, 0, 160, 160, 300, 250, 220, 220);
+          }
         }
+        t = (new Date()).getTime();
       }, 30);
     }
   };
@@ -150,7 +158,6 @@ const main = (() => {
     && b.pos.y + (b.h / 2) > a.pos.y - (a.h / 2 * 1.2)
   ;
   const handleCollisions = () => all.forEach((unit, i) => {
-    //check collision
     if (unit.type === 'item') {
       const index = all.findIndex(a => unit !== a && a.type === 'friend' && collided(a, unit));
       if (index > -1) {
@@ -243,20 +250,5 @@ const main = (() => {
       }
     });
   };
-  const loadData = () => {
-    const localData = window.localStorage.getItem(APP_DATA_KEY);
-    if (localData) {
-      const parsedData = JSON.parse(localData);
-      if (parsedData) {
-        data = parsedData;
-      }
-    }
-  };
-  const saveData = () => {
-    window.localStorage.setItem(APP_DATA_KEY, JSON.stringify(data));
-  }
-  const clearData = () => {
-    window.localStorage.setItem(APP_DATA_KEY, JSON.stringify(data));
-  }
   return { startGame, startScreen }
 })();
