@@ -8,6 +8,17 @@ Play a classic top-down shooter with a boss at the end. This game was created wi
   <a href="https://lewdev.itch.io/moonshot-commander">👉 itch.io Game Page</a>
 </p>
 
+## Screenshots
+
+<p align="center">
+  <a href="="https://lewdev.github.io/apps/moonshot-commander/screenshots/screenshot-1.png"">
+    <img src="https://lewdev.github.io/apps/moonshot-commander/screenshots/screenshot-1.png" width="200" />
+  </a>
+  <a href="="https://lewdev.github.io/apps/moonshot-commander/screenshots/screenshot-2.png"">
+    <img src="https://lewdev.github.io/apps/moonshot-commander/screenshots/screenshot-2.png" width="200" />
+  </a>
+</p>
+
 ## Tools used
 * [BeepBox](https://www.beepbox.co) - for creating background music
 * [ZzFX](https://github.com/KilledByAPixel/ZzFX) - for sound effects
@@ -16,7 +27,6 @@ Play a classic top-down shooter with a boss at the end. This game was created wi
 * [Paint.NET](https://www.getpaint.net) - for pixel art and putting images together
 
 ## Game Off 2020
-
 This game was submitted to a game jam hosted by Github, [Game Off 2020](https://itch.io/jam/game-off-2020).
 
 The theme was "Moonshot" and I had a top-down shooter going so I went with it since it could easily be about space. There's a moon involved and shooting.
