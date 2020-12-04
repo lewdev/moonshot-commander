@@ -7,6 +7,7 @@ const Levels = (() => {
   let intervalCount = 0;
   let boss = null;
   const start = () => {
+    if (interval) clearInterval(interval);
     isBoss = 0;
     intervalCount = 0;
     interval = setInterval(spawnEnemies, 3000);

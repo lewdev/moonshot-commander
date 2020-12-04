@@ -1,6 +1,6 @@
 
 const main = (() => {
-  const APP_DATA_KEY = "moonshot-commander";
+  // const APP_DATA_KEY = "moonshot-commander";
   let endScreenInterval;
   let startScreenInterval;
   let endScreenStart = 0;
@@ -13,6 +13,8 @@ const main = (() => {
     Keys.init();
     Img.init();
     startScreen();
+    // state = GAME_STATE.END;
+    // handleGameState();
   };
   const startScreen = () => {
     clearInterval(gameLoop);
@@ -104,6 +106,10 @@ const main = (() => {
           if (t - endScreenStart > 10000) {
             ctx.drawImage(faceImg.image, 0, 0, 160, 160, 300, 250, 220, 220);
           }
+          //draw score
+          Draw.text(`Score: ${Num.thousandsSeparators(data["score"])}`, {
+            x: (c.width / 2) + 200, y: (c.height / 2) + 150, fontSize: 30, color: Colors.WHITE, align: 'center'
+    });
         }
         t = (new Date()).getTime();
       }, 30);

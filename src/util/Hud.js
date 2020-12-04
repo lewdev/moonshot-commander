@@ -55,7 +55,7 @@ const Hud = (() => {
     let xPos = c.width - 40
       , yPos = 40
     ;
-    Draw.text(`Score: ${data["score"]}`, {
+    Draw.text(`Score: ${Num.thousandsSeparators(data["score"])}`, {
       x: xPos, y: yPos, fontSize: 30, color: Colors.WHITE, align: 'right'
     });
   };
