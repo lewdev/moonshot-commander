@@ -2,3 +2,14 @@ body {
   margin:0;
   background-color:#2b0f54;
 }
+.top-right {
+  position: absolute;
+  top: 0; right: 0;
+}
+.top-right > a {
+  text-decoration: none;
+  border-radius: .2rem;
+  font-size: 2rem;
+  padding: .2rem;
+}
+.top-right > a:hover { background-color: #ab1f65; }
